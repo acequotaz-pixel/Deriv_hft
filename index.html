@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANTUMFX // DERIV HFT ENGINE - Loading...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #030b0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .loader {
+            text-align: center;
+            color: #00ffe7;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #0e3344;
+            border-top-color: #00ffe7;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        p {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <p>LOADING QUANTUMFX HFT ENGINE...</p>
+    </div>
+    <script>
+        // Load the bot file
+        fetch('Deriv_HFT_Enginebot')
+            .then(response => response.text())
+            .then(html => {
+                document.open();
+                document.write(html);
+                document.close();
+            })
+            .catch(error => {
+                console.error('Error loading bot:', error);
+                document.body.innerHTML = '<div class="loader"><p style="color: #ff3860;">Error loading bot. Please refresh.</p></div>';
+            });
+    </script>
+</body>
+</html>
